@@ -1,0 +1,153 @@
+body {
+  text-align: center;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+/* Reset #################################################################### */
+html{height:100%;font-size:100%;}
+body{font-family:Verdana,Arial,Helvetica,sans-serif;font-size:0.6em;margin:0;padding:0;height:100%;text-align:left;cursor:default;background:#333;color:#FFF}
+h1,h2,h3,p,ul,form{margin:0;padding:0;font-weight:normal}
+input{margin:0;padding:0;-webkit-appearance:none;border-radius:0}
+textarea{margin:0;resize:none;font-family:Verdana,Arial,Helvetica,sans-serif;-webkit-appearance:none;border-radius:0;}
+label,button{cursor:pointer}
+a{word-wrap:break-word}
+a:link,a:visited,a:hover,a:active{text-decoration:none;cursor:pointer}
+a.inactif:link,a.inactif:visited,a.inactif:hover,a.inactif:active{cursor:default}
+img{display:block;border:0}
+p img{display:inline-block}
+ul{list-style-type:none}
+hr{border:0;height:0;margin:0;padding:0;clear:both}
+.hidden{display:none}
+/* ########################################################################## */
+
+.column{margin:0 auto;background:#FFF;color:#333;text-align:center;box-shadow:0 0 150px 0 rgba(0,0,0,0.5)}
+.menu{position:fixed;top:0;width:100%;height:30px;background:#666}
+.menu li{float:left;display:block;width:40px;height:30px;background:url("../elements/sprite.png") -560px 0 no-repeat;text-indent:100%;white-space:nowrap;overflow:hidden}
+.menu .websites{background-position:-600px 0}
+.menu .youtube{background-position:-640px 0}
+.menu .twitter{background-position:-680px 0}
+.menu .facebook{background-position:-720px 0}
+.menu .others{background-position:-760px 0}
+.menu .contact{background-position:-800px 0}
+
+.menu .active,
+.menu li:hover{background-color:#0198b5}
+.menu .websites.active,
+.menu .websites:hover{background-color:#333}
+.menu .youtube.active,
+.menu .youtube:hover{background-color:#c00}
+.menu .twitter.active,
+.menu .twitter:hover{background-color:#3399cc}
+.menu .facebook.active,
+.menu .facebook:hover{background-color:#1a4177}
+.menu .others.active,
+.menu .others:hover{background-color:#333}
+.menu .contact.active,
+.menu .contact:hover{background-color:#c9462a}
+
+
+.menu a{display:block;width:80px;height:60px;}
+
+.message{color:#FFF;font-weight:bold;font-size:1.4em;padding:40px}
+.message.level_0{background:#093}
+.message.level_1{background:#C00}
+
+.content img.loader{width:100px;height:100px;margin:auto;margin-top:135px}
+
+
+h1{height:30px;font-size:0.5em}
+.header{height:360px}
+.header.home{background:url("../elements/header-home.jpg") #0198b5 center top no-repeat}
+.header.youtube{background:#c00}
+.header.twitter{background:#39C}
+.header.facebook{background:#1a4177}
+.header.websites,
+.header.others{background:#0198b5}
+.fi{height:360px;background:url("../elements/fi.png") center bottom no-repeat}
+
+h2{padding:20px 8% 0;font-size:2.5em}
+.description{margin:20px 8% 0;padding:0 4%;border-left:1px solid #666;border-right:1px solid #666;font-size:1.2em}
+.list{width:250px;margin:0 auto;min-height: 370px;}
+.error{margin-top:50px;}
+.message-erreur{font-size:1.6em;padding:10px;background-color:#FFDCDC;border:1px solid #FFBBBB;}
+.content li{display:block;margin:20px 0 0 0;width:250px;text-align:left;float:left}
+.content li a{display:block;color:#666}
+.content li a:hover{color:#333}
+.content li img.vignette{box-shadow:0 0 40px 0 rgba(0,0,0,0.3)}
+.content li h3{padding:10px 0 0;font-size:1.2em;font-weight:bold}
+.content li p{padding:10px 0 0;font-size:1.2em}
+.end{padding:120px 0 60px;background:url("../elements/sprite.png") center -60px no-repeat}
+.end a{border-radius:4px;padding:8px 10px;background:#0198b5;color:#FFF;font-weight:bold;font-size:1.1em}
+.end a:hover{background:#016d82}
+
+.content{background:url("../elements/contact.png") #FFF center bottom no-repeat}
+.content.websites{background:url("../elements/website-youtube.png") #FFF center bottom no-repeat}
+.content.youtube{background:url("../elements/youtube-twitter.png") #c00 center bottom no-repeat;color:#FFF}
+.content.twitter{background:url("../elements/twitter-facebook.png") #39C center bottom no-repeat;color:#FFF}
+.content.facebook{background:url("../elements/facebook-others.png") #1a4177 center bottom no-repeat;color:#FFF}
+.content.others{background:url("../elements/contact.png") #FFF center bottom no-repeat}
+.content.contact{background:#c9462a;color:#FFF}
+
+.youtube .description,
+.twitter .description,
+.facebook .description,
+.contact .description{border-left:1px solid #FFF;border-right:1px solid #FFF}
+
+.youtube li a,
+.twitter li a,
+.facebook li a{color:#FFF}
+
+.youtube li a:hover,
+.twitter li a:hover,
+.facebook li a:hover{color:#CCC}
+
+.youtube .end a{background:#FFF;color:#c00}
+.twitter .end a{background:#FFF;color:#39C}
+.facebook .end a{background:#FFF;color:#1a4177}
+
+.youtube .end a:hover,
+.twitter .end a:hover,
+.facebook .end a:hover{background:#CCC}
+
+form{padding:0 8% 20px}
+form p{font-size:1.2em;padding-top:20px;text-align:left}
+input{width:94%;border:0;margin:10px 0 0;padding:5px 3%;box-shadow:0 0 20px 0 rgba(0,0,0,0.3);font-size:1.2em;color:#333}
+textarea{width:94%;border:0;margin:20px 0 0;padding:5px 3%;box-shadow:0 0 20px 0 rgba(0,0,0,0.3);font-size:1.2em;color:#333}
+.button{width:auto;border-radius:4px;margin-top:20px;padding:8px 10px;background:#FFF;color:#c9462a;font-weight:bold;font-size:0.9em;cursor:pointer}
+.button:hover{background:#CCC}
+
+@media screen and (min-width: 640px){
+body{font-size:0.8em;}
+.menu{height:60px}
+.menu li{width:80px;height:60px;background-position:0 0}
+.menu .websites{background-position:-80px 0}
+.menu .youtube{background-position:-160px 0}
+.menu .twitter{background-position:-240px 0}
+.menu .facebook{background-position:-320px 0}
+.menu .others{background-position:-400px 0}
+.menu .contact{background-position:-480px 0}
+h1{height:60px}
+h2{padding:40px 8% 0;font-size:3em}
+
+.list{width:auto;margin:0 6%;padding:20px 0}
+.content li{width:29%;padding:20px 2.15% 0;margin:0}
+.content img.vignette{width:100%;height:100%;min-height:200px;}
+.break{clear:both}
+
+.description{margin:40px 8% 0;padding:0 4%;}
+.content li h3,
+.content li p,
+.end a{font-size:0.9em}
+form p{font-size:1.2em;padding-top:40px}
+.button{margin-top:40px}
+}
+
+@media screen and (min-width: 1024px){
+.column,
+.menu{width:1024px}
+input,
+textarea{width:846px;margin:20px 0 0;padding:10px;box-shadow:0 0 40px 0 rgba(0,0,0,0.3)}
+}
