@@ -16,6 +16,6 @@ foreach ($array_contents as $Content) {
     <br />
     <?php
 }
-exit;
+
 ?>
 <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
