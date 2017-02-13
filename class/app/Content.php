@@ -199,8 +199,12 @@ class Content extends Base
         
         if ($req->execute($args)) {
             while ($row = $req->fetch()) {
-                $Content = new Content($row);
-                $array[$row['id']] = $Content;
+                if ($to_array) {
+                    $array[$row['id']] = $row;
+                } else {
+                    $Content = new Content($row);
+                    $array[$row['id']] = $Content;
+                }
             }
             
             return $array;

@@ -206,8 +206,12 @@ class Source extends Base
         
         if ($req->execute($args)) {
             while ($row = $req->fetch()) {
-                $Source = new Source($row);
-                $array[$row['id']] = $Source;
+                if ($to_array) {
+                    $array[$row['id']] = $row;
+                } else {
+                    $Source = new Source($row);
+                    $array[$row['id']] = $Source;
+                }
             }
             
             return $array;
@@ -272,8 +276,7 @@ class Source extends Base
         }
         
         $content = file_get_contents(
-            'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails,snippet&maxResults=50&playlistId=' .
-            $playlist_id . '&key=' . GOOGLE_API
+            'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails,snippet&maxResults=50&playlistId=' . $playlist_id . '&key=' . GOOGLE_API
         );
         
         if ($content) {
@@ -302,7 +305,11 @@ class Source extends Base
     }
     
     private function getYoutubeListIdFromUrl($youtube_url) {
-        preg_match('#^(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?.*?(?:v|list)=(.*?)(?:&|$)|^(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?(?:(?!=).)*\/(.*)$#', $youtube_url, $results);
+        preg_match(
+            '#^(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?.*?(?:v|list)=(.*?)(?:&|$)|^(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?(?:(?!=).)*\/(.*)$#',
+            $youtube_url,
+            $results
+        );
         if (!empty($results[1])) {
             return $results[1];
         }

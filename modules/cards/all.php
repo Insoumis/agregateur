@@ -5,12 +5,23 @@ if (!empty($_GET['st'])) {
 }
 
 $source_id = null;
+$source_link = null;
+
 if (!empty($_GET['source'])) {
     $source_id = $_GET['source'];
+    
+    $Source = new Source($source_id);
+    if (!$Source->isSql()) {
+        exit('Source not found');
+    }
+    
+    $source_link = '&source=' . $Source->getId();
 }
 
 $array_contents_all = Content::getAll(null, false, null, null, $source_id);
 $array_contents = Content::getAll(null, false, $start, 10, $source_id);
+
+$array_sources = Source::getAll();
 
 $max = count($array_contents_all);
 
@@ -18,8 +29,29 @@ include_once 'templates/head.php';
 ?>
     <div class="content websites">
         <h2>Dernières nouvelles</h2>
-        <p class="description">Retrouvez en un seul endroit toutes les actualités du mouvement de la France
-            Insoumise.</p>
+        <p class="description">
+            Retrouvez en un seul endroit toutes les actualités du mouvement de la France Insoumise.
+        </p>
+        <nav class="sources">
+            <ul>
+                <?php
+                foreach ($array_sources as $SourceNav) {
+                    $class = '';
+                    
+                    if (!empty($_GET['source']) && $_GET['source'] == $SourceNav->getId()) {
+                        $class = 'active';
+                    }
+                    ?>
+                    <li>
+                        <a href="?source=<?php echo $SourceNav->getId() ?>" class="source <?php echo $class ?>">
+                            <?php echo $SourceNav->getTitle() ?>
+                        </a>
+                    </li>
+                    <?php
+                }
+                ?>
+            </ul>
+        </nav>
         <div class="list">
             <?php
             
@@ -38,12 +70,12 @@ include_once 'templates/head.php';
                 for ($i = 1; $i <= ceil($max / 10); $i = $i + 1) {
                     $class = '';
                     
-                    if (!empty($_GET['st']) && $_GET['st'] == $i) {
+                    if (empty($_GET['st']) && $i == 1 || (!empty($_GET['st']) && $_GET['st'] == $i)) {
                         $class = 'active';
                     }
                     
                     ?>
-                    <a href="?st=<?php echo $i ?>" class="<?php echo $class ?>"><?php echo $i; ?></a>
+                    <a href="?st=<?php echo $i . $source_link ?>" class="<?php echo $class ?>"><?php echo $i; ?></a>
                     <?php
                 }
                 ?>

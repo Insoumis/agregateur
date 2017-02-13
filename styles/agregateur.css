@@ -10,7 +10,7 @@
     margin: .5rem;
 }
 
-.pagination a.active {
+.pagination .active, .sources .active {
     background: #0198b5;
     color: white;
 }
@@ -20,4 +20,27 @@
     justify-content: center;
     align-items: center;
     margin-top: 3rem;
+}
+
+.sources {
+    margin: 2rem 0;
+}
+
+.sources ul {
+    display: flex;
+    flex-wrap: wrap;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+.sources ul li {
+    padding: 0;
+    width: auto;
+}
+
+.sources ul li a {
+    padding: .5rem 1rem;
+    box-shadow: 0 0 25px rgba(0, 0, 0, .15);
+    margin: 0 .5rem;
 }
