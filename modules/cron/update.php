@@ -13,4 +13,7 @@ foreach ($array_sources as $Source) {
     if ($diff > TIME_BETWEEN_CHECKS) {
         $Source->fetch();
     }
+    
+    $Source->setUpdated_at(new DateTime());
+    $Source->save();
 }

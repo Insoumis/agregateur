@@ -157,9 +157,11 @@ class Content extends Base
     /**
      * Retourne les éléments correspondants aux paramètres donnés
      *
-     * @param int     $id       L'id de l'élément à récupérer
-     * @param boolean $to_array True si on souhaite renvoyer les valeurs sous forme de tableau au lieu d'objets
-     * @param string  $limit    Le nombre d'éléments à renvoyer
+     * @param int     $id        L'id de l'élément à récupérer
+     * @param boolean $to_array  True si on souhaite renvoyer les valeurs sous forme de tableau au lieu d'objets
+     * @param int     $start
+     * @param string  $limit     Le nombre d'éléments à renvoyer
+     * @param int     $source_id L'ID de la source des contenus
      * @return Content[]
      */
     public static function getAll($id = null, $to_array = false, $start = null, $limit = null, $source_id = null) {
@@ -182,24 +184,25 @@ class Content extends Base
             $args[':source_id'] = (int)$source_id;
         }
         
-        if ($limit) {
-            $limit = $start . ', ' . $limit;
+        if ($limit !== null) {
+            $limit = 'LIMIT ' . $start . ', ' . $limit;
         }
         
         $array = array();
         $sql = MyPDO::get();
         
-        $req = $sql->prepare(
-            '
+        $query = '
                     SELECT `' . static::$_tableSql . '`.*
-                    FROM `' . static::$_tableSql . '`   ' . $where . ' ORDER BY `created_at` DESC ' . $limit
-        );
+                    FROM `' . static::$_tableSql . '`   ' . $where . ' ORDER BY `created_at` DESC ' . $limit;
+        
+        $req = $sql->prepare($query);
         
         if ($req->execute($args)) {
             while ($row = $req->fetch()) {
                 $Content = new Content($row);
                 $array[$row['id']] = $Content;
             }
+            
             return $array;
         } else {
             trigger_error($req->errorInfo()[2], E_USER_ERROR);
